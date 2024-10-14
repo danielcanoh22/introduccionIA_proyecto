@@ -53,3 +53,8 @@ Si deseas entrenar nuevamente el modelo, utiliza el siguiente comando
 ``` bash 
 python train.py --data_file data/train.csv --model_file mushroom_model.pkl --overwrite_model
 ```
+
+Puedes ver las predicciones realizadas en la consola con el siguiente comando
+``` bash 
+cat mushroom_preds.csv
+```
