@@ -24,3 +24,37 @@
 </ol>
 <p><b>Nota:</b> algunas de las celdas de código pueden tardar algunos minutos en ejecutarse completamente.</p>
 
+<hr/>
+
+<h2>Fase 2</h2>
+<p>
+  <strong>⛔⛔ IMPORTANTE:</strong> Debido a que los archivos .CSV eran demasiado grandes, se comprimieron para subirlos a GitHub. Se debe descomprimir los archivos test.zip y data/train.zip para que el modelo pueda funcionar correctamente.
+</p>
+
+<h3>Pasos para ejecutar el modelo:</h3>
+<p><i>Todos los comandos se ejecutan estando ubicados en la carpeta fase-2</i></p>
+
+Construir la imagen de Docker
+``` bash 
+docker build -t mushroom_img .
+```
+
+Ejecutar el contenedor de Docker
+``` bash 
+docker run -it mushroom_img
+```
+
+Hacer predicciones utilizando el modelo entrenado
+``` bash 
+python predict.py --input_file test.csv --model_file mushroom_model.pkl --output_file mushroom_preds.csv
+```
+
+Si deseas entrenar nuevamente el modelo, utiliza el siguiente comando
+``` bash 
+python train.py --data_file data/train.csv --model_file mushroom_model.pkl --overwrite_model
+```
+
+Puedes ver las predicciones realizadas en la consola con el siguiente comando
+``` bash 
+cat mushroom_preds.csv
+```
