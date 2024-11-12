@@ -85,8 +85,8 @@ def predict():
         make_prediction(input_file=input_file_used, model_file=MODEL_FILE, output_file=OUTPUT_FILE)
 
         # Leer el archivo de salida y devolver las predicciones
-        df_resultado = pd.read_csv(OUTPUT_FILE)
-        predictions = df_resultado.to_dict(orient="records")
+        df_result = pd.read_csv(OUTPUT_FILE)
+        predictions = df_result.to_dict(orient="records")
         return jsonify({"message": message, "predictions": predictions})
     except Exception as e:
         logger.error(f"Error when making predictions: {e}")
