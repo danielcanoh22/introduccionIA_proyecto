@@ -35,7 +35,7 @@ def make_prediction(input_file, model_file, output_file):
     Realiza predicciones utilizando el modelo entrenado.
 
     Args:
-        input_file (str): Ruta del archivo CSV con los datos de entrada (sin objetivos).
+        input_file (str): Ruta del archivo CSV con los datos de entrada.
         model_file (str): Ruta del archivo del modelo entrenado.
         output_file (str): Ruta del archivo donde se guardarán las predicciones.
 

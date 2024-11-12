@@ -33,7 +33,6 @@ def update(df):
 
     return df
 
-
 # Función para entrenar el modelo
 def train_model(data_file: str, model_file: str, overwrite: bool = False):
     """
@@ -68,20 +67,6 @@ def train_model(data_file: str, model_file: str, overwrite: bool = False):
     for col in train.columns:
         train[col] = imp.fit_transform(train[[col]])[:, 0]
 
-    # Función para actualizar columnas categóricas
-    def update(df):
-        threshold = 100
-        cat_c = [
-            'cap-shape','cap-surface','cap-color','does-bruise-or-bleed','gill-attachment','gill-spacing','gill-color',
-            'stem-root','stem-surface','stem-color','veil-type','veil-color','has-ring','ring-type',
-            'spore-print-color','habitat','season',
-        ]
-        for col in cat_c:
-            df[col] = df[col].fillna('missing')
-            df.loc[df[col].value_counts(dropna=False)[df[col]].values < threshold, col] = "noise"
-            df[col] = df[col].astype('category')
-        return df
-
     # Actualizar el DataFrame de entrenamiento
     train = update(train)
 
@@ -103,7 +88,7 @@ def train_model(data_file: str, model_file: str, overwrite: bool = False):
     # Dividir los datos en conjuntos de entrenamiento y validación
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=5)
 
-    # Crear el clasificador (usando XGBoost por ejemplo)
+    # Crear el clasificador
     from xgboost import XGBClassifier
     clf = XGBClassifier(use_label_encoder=False, eval_metric='logloss')
 

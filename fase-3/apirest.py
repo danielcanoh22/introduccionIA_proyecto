@@ -17,7 +17,7 @@ ZIP_TRAIN_FILE = "data/train.zip"
 ZIP_TEST_FILE = "data/test.zip"
 EXTRACTED_FOLDER = "data/"
 
-# Función para extraer el archivo RAR
+# Función para extraer el archivo ZIP
 def extract_zip_file(zip_path, extract_to):
     if not os.path.exists(extract_to):
         os.makedirs(extract_to)
@@ -36,12 +36,11 @@ def train():
     - JSON con el estado de éxito o error del entrenamiento.
     """
     try:
-        # Extraer los archivos RAR antes de entrenar
+        # Extraer los archivos ZIP antes de entrenar
         extract_zip_file(ZIP_TRAIN_FILE, EXTRACTED_FOLDER)
 
         # Ruta al archivo de entrenamiento extraído
         train_file_path = os.path.join(EXTRACTED_FOLDER, "train.csv")
-
 
         # Llamar a la función train_model para entrenar el modelo
         train_model(data_file=train_file_path, model_file=MODEL_FILE, overwrite=True)
@@ -79,7 +78,7 @@ def predict():
             message = "Predictions made with the provided file"
         else:
             # Usa el archivo predeterminado
-            input_file_used = DEFAULT_TEST_FILE
+            input_file_used = test_file_path
             message = "Predictions made with the default file"
 
         # Llamar a la función make_prediction para realizar las predicciones

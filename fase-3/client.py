@@ -27,7 +27,7 @@ def make_prediction(file_path=None):
     
     Parámetros:
     - file_path (str): Ruta del archivo CSV para enviar en la solicitud.
-                       Si es None, se utilizará el archivo predeterminado en el servidor.
+                       Si es None, se utilizará el archivo predeterminado.
     """
     try:
         # Si se sube un archivo diferente al default, utilizarlo para las predicciones
