@@ -58,3 +58,34 @@ Puedes ver las predicciones realizadas en la consola con el siguiente comando
 ``` bash 
 cat mushroom_preds.csv
 ```
+
+<hr/>
+
+<h2>Fase 3</h2>
+
+<p>La API implementada para esta fase se realizó con Flask.</p>
+
+<h3>Pasos para construir la imagen de Docker y ejecutar el contenedor:</h3>
+<p><i>Todos los comandos se ejecutan estando ubicados en la carpeta fase-3</i></p>
+
+Construir la imagen de Docker
+``` bash 
+docker build -t mushroom_img .
+```
+
+Ejecutar el contenedor de Docker
+``` bash 
+docker run -p 5000:5000 mushroom_img
+```
+<p>🟢 En la terminal actual se mostrarán todos los registros a medida que se ejecute el código.</p>
+
+<h3>Pasos para probar la API:</h3>
+<p><i>Para probar la API es necesario abrir una nueva terminal y asegurarse de estar ubicados en la carpeta fase-3.</i></p>
+
+Probar la API utilizando el Script de client.py
+``` bash 
+python client.py
+```
+
+<p><b>NOTA:</b> Por defecto la API se está probando con el archivo test_api/test_final.csv que tiene pocos datos. Si se desea probar con el archivo test.csv original,
+se debe cambiar la línea make_prediction(PREDICTION_FILE) por make_prediction(None) en el archivo client.py</p>
